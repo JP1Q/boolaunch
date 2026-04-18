@@ -25,4 +25,18 @@ class HeaderStatusFormatterTest {
         val timeLabel = HeaderStatusFormatter.formatCurrentTime(knownDate, Locale.US)
         assertEquals("[ 00:00 ]", timeLabel)
     }
+
+    @Test
+    fun `formatAsciiClock renders multi-line ascii digits for current time`() {
+        val knownDate = Date(0L)
+        val asciiClock = HeaderStatusFormatter.formatAsciiClock(knownDate, Locale.US)
+        assertEquals(
+            " ###   ###       ###   ### \n" +
+                "#   # #   #  #  #   # #   #\n" +
+                "#   # #   #     #   # #   #\n" +
+                "#   # #   #  #  #   # #   #\n" +
+                " ###   ###       ###   ### ",
+            asciiClock
+        )
+    }
 }

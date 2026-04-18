@@ -5,6 +5,8 @@ import android.content.IntentFilter
 import android.os.BatteryManager
 import android.content.pm.ResolveInfo
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +18,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: AppAdapter
+    private val mainHandler = Handler(Looper.getMainLooper())
+    private val clockRefreshRunnable = object : Runnable {
+        override fun run() {
+            updateHeaderStatus()
+            mainHandler.postDelayed(this, millisUntilNextMinute())
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +41,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        updateHeaderStatus()
+        startClockRefresh()
         refreshAppList()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mainHandler.removeCallbacks(clockRefreshRunnable)
     }
 
     private fun refreshAppList() {
@@ -71,6 +85,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateHeaderStatus() {
         binding.headerBatteryText.text = formatBatteryStatus()
         binding.headerTimeText.text = formatCurrentTime()
+        binding.asciiClockText.text = formatAsciiClock()
     }
 
     private fun formatBatteryStatus(): String {
@@ -90,5 +105,26 @@ class MainActivity : AppCompatActivity() {
             currentDate = Date(),
             locale = Locale.getDefault()
         )
+    }
+
+    private fun formatAsciiClock(): String {
+        return HeaderStatusFormatter.formatAsciiClock(
+            currentDate = Date(),
+            locale = Locale.getDefault()
+        )
+    }
+
+    private fun startClockRefresh() {
+        mainHandler.removeCallbacks(clockRefreshRunnable)
+        mainHandler.post(clockRefreshRunnable)
+    }
+
+    private fun millisUntilNextMinute(): Long {
+        val elapsedThisMinute = System.currentTimeMillis() % CLOCK_REFRESH_PERIOD_MILLIS
+        return CLOCK_REFRESH_PERIOD_MILLIS - elapsedThisMinute
+    }
+
+    companion object {
+        private const val CLOCK_REFRESH_PERIOD_MILLIS = 60_000L
     }
 }

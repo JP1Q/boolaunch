@@ -8,6 +8,20 @@ object HeaderStatusFormatter {
 
     private const val UNKNOWN_BATTERY_STATUS = "[ --% ]"
     private const val TIME_PATTERN = "HH:mm"
+    private val ASCII_DIGITS = mapOf(
+        '0' to listOf(" ### ", "#   #", "#   #", "#   #", " ### "),
+        '1' to listOf("  #  ", " ##  ", "  #  ", "  #  ", " ### "),
+        '2' to listOf(" ### ", "#   #", "   # ", "  #  ", "#####"),
+        '3' to listOf("#### ", "    #", " ### ", "    #", "#### "),
+        '4' to listOf("#   #", "#   #", "#####", "    #", "    #"),
+        '5' to listOf("#####", "#    ", "#### ", "    #", "#### "),
+        '6' to listOf(" ### ", "#    ", "#### ", "#   #", " ### "),
+        '7' to listOf("#####", "   # ", "  #  ", " #   ", "#    "),
+        '8' to listOf(" ### ", "#   #", " ### ", "#   #", " ### "),
+        '9' to listOf(" ### ", "#   #", " ####", "    #", " ### "),
+        ':' to listOf("     ", "  #  ", "     ", "  #  ", "     ")
+    )
+    private val UNKNOWN_ASCII_GLYPH = List(5) { "     " }
 
     fun formatBatteryStatus(batteryLevel: Int, batteryScale: Int): String {
         if (batteryLevel < 0 || batteryScale <= 0) {
@@ -20,5 +34,23 @@ object HeaderStatusFormatter {
     fun formatCurrentTime(currentDate: Date, locale: Locale): String {
         val timeFormatter = SimpleDateFormat(TIME_PATTERN, locale)
         return "[ ${timeFormatter.format(currentDate)} ]"
+    }
+
+    fun formatAsciiClock(currentDate: Date, locale: Locale): String {
+        val timeFormatter = SimpleDateFormat(TIME_PATTERN, locale)
+        val timeText = timeFormatter.format(currentDate)
+        val rowCount = ASCII_DIGITS.getValue('0').size
+        val rows = MutableList(rowCount) { "" }
+
+        for (character in timeText) {
+            val glyph = ASCII_DIGITS[character] ?: UNKNOWN_ASCII_GLYPH
+            for (rowIndex in 0 until rowCount) {
+                if (rows[rowIndex].isNotEmpty()) {
+                    rows[rowIndex] += " "
+                }
+                rows[rowIndex] += glyph[rowIndex]
+            }
+        }
+        return rows.joinToString(separator = "\n")
     }
 }

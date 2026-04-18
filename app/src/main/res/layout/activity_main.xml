@@ -7,6 +7,14 @@
     android:background="@color/bg"
     android:padding="12dp">
 
+    <TextView
+        android:id="@+id/asciiClockText"
+        style="@style/Widget.Boolaunch.Tui.HeaderStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="@string/header_ascii_clock_placeholder" />
+
     <com.jp1q.boolaunch.AsciiRuleTextView
         android:id="@+id/topSeparatorText"
         style="@style/Widget.Boolaunch.Tui.Separator"
