@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private val clockRefreshRunnable = object : Runnable {
         override fun run() {
             updateHeaderStatus()
-            mainHandler.postDelayed(this, CLOCK_REFRESH_INTERVAL_MILLIS)
+            mainHandler.postDelayed(this, millisUntilNextMinute())
         }
     }
 
@@ -119,7 +119,12 @@ class MainActivity : AppCompatActivity() {
         mainHandler.post(clockRefreshRunnable)
     }
 
+    private fun millisUntilNextMinute(): Long {
+        val elapsedThisMinute = System.currentTimeMillis() % CLOCK_REFRESH_PERIOD_MILLIS
+        return CLOCK_REFRESH_PERIOD_MILLIS - elapsedThisMinute
+    }
+
     companion object {
-        private const val CLOCK_REFRESH_INTERVAL_MILLIS = 1_000L
+        private const val CLOCK_REFRESH_PERIOD_MILLIS = 60_000L
     }
 }
