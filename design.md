@@ -2,6 +2,14 @@
 **Type:** Minimalistic TUI Android Launcher
 **Status:** Open Source
 
+## Core Philosophy: Maintainability
+Code must be instantly understandable and optimized for human readability.
+* **Hyper-Descriptive Naming:** Variables and functions must tell the exact story.
+* **Single Responsibility Principle (SRP):** Functions should do exactly one thing.
+* **Guard Clauses and Early Returns:** Use early returns to keep the "happy path" flat.
+* **Magic Number Elimination:** Extract raw numbers and strings into well-named constants.
+* **Strict Type Hinting:** Define exact input and return types to eliminate ambiguity.
+
 ## Colors
 
 | Color Name | HEX | RGB | CMYK |
@@ -37,3 +45,27 @@
 | '_ \ / _ \ / _ \| |/ _` | | | | '_ \ / __| '_ \ 
 | |_) | (_) | (_) | | (_| | |_| | | | | (__| | | |
 |_.__/ \___/ \___/|_|\__,_|\__,_|_| |_|\___|_| |_|
+```
+
+### Sample UI Layout
+
+```text
+================================================
+[ boolaunch ]                 [ 100% ] [ 17:59 ]
+================================================
+
+  [ Phone ]
+
+  [ Messages ]
+
+  [ Browser ]
+
+  [ Camera ]
+
+  [ Settings ]
+
+------------------------------------------------
+           < swipe for more >            
+================================================
+```
+```
