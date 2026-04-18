@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun formatBatteryStatus(): String {
+        // Null receiver queries the sticky battery broadcast once without subscribing long-term.
         val batteryStatusIntent = registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
             ?: return "[ --% ]"
         val batteryLevel = batteryStatusIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
