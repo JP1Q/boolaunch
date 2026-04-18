@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="colorDivider" format="color" />
+
     <declare-styleable name="AsciiRuleTextView">
         <attr name="ruleCharacter" format="string" />
     </declare-styleable>

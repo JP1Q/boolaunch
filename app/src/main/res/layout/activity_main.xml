@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg"
+    android:background="?attr/colorBackground"
     android:padding="12dp">
 
     <com.jp1q.boolaunch.AsciiRuleTextView
@@ -58,12 +58,64 @@
         android:layout_marginBottom="8dp"
         app:ruleCharacter="=" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/appList"
+    <ViewFlipper
+        android:id="@+id/contentFlipper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:scrollbars="none" />
+        android:measureAllChildren="false">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+
+        <LinearLayout
+            android:id="@+id/settingsPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:id="@+id/settingsTitleText"
+                style="@style/Widget.Boolaunch.Tui.HeaderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_title" />
+
+            <TextView
+                android:id="@+id/settingsColourSchemeLabel"
+                style="@style/Widget.Boolaunch.Tui.HeaderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/settings_colour_scheme" />
+
+            <RadioGroup
+                android:id="@+id/colourSchemeGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <RadioButton
+                    android:id="@+id/colourSchemeCrimson"
+                    style="@style/Widget.Boolaunch.Tui.AppItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_colour_scheme_crimson" />
+
+                <RadioButton
+                    android:id="@+id/colourSchemeEmerald"
+                    style="@style/Widget.Boolaunch.Tui.AppItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_colour_scheme_emerald" />
+            </RadioGroup>
+        </LinearLayout>
+    </ViewFlipper>
 
     <com.jp1q.boolaunch.AsciiRuleTextView
         android:id="@+id/footerSeparatorText"
@@ -78,7 +130,7 @@
         style="@style/Widget.Boolaunch.Tui.Footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/footer_hint"
+        android:text="@string/footer_hint_apps"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp" />
 
