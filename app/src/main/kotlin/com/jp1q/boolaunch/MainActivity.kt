@@ -2,11 +2,13 @@ package com.jp1q.boolaunch
 
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.Context
 import android.os.BatteryManager
 import android.content.pm.ResolveInfo
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -163,14 +165,29 @@ class MainActivity : AppCompatActivity() {
         isSearchScreenVisible = true
         binding.appList.isVisible = false
         binding.searchContainer.isVisible = true
+        binding.searchInput.text?.clear()
+        binding.searchInput.requestFocus()
+        showKeyboardForSearchInput()
         binding.footerHintText.text = getString(R.string.footer_hint_back)
     }
 
     private fun showHomeScreen() {
         isSearchScreenVisible = false
         binding.searchContainer.isVisible = false
+        binding.searchInput.clearFocus()
+        hideKeyboardFromSearchInput()
         binding.appList.isVisible = true
         binding.footerHintText.text = getString(R.string.footer_hint)
+    }
+
+    private fun showKeyboardForSearchInput() {
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        inputMethodManager?.showSoftInput(binding.searchInput, InputMethodManager.SHOW_IMPLICIT)
+    }
+
+    private fun hideKeyboardFromSearchInput() {
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        inputMethodManager?.hideSoftInputFromWindow(binding.searchInput.windowToken, 0)
     }
 
     companion object {
