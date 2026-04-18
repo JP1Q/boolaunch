@@ -1,26 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg"
-    android:padding="16dp">
+    android:padding="12dp">
 
-    <TextView
-        android:id="@+id/headerText"
+    <com.jp1q.boolaunch.AsciiRuleTextView
+        android:id="@+id/topSeparatorText"
+        style="@style/Widget.Boolaunch.Tui.Separator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/header"
-        android:textColor="@color/accent"
-        android:fontFamily="monospace"
-        android:textSize="14sp"
-        android:paddingBottom="8dp" />
+        app:ruleCharacter="=" />
 
-    <View
+    <LinearLayout
+        android:id="@+id/headerRow"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"
-        android:layout_marginBottom="8dp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/headerTitleText"
+            style="@style/Widget.Boolaunch.Tui.HeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header_title" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/headerBatteryText"
+            style="@style/Widget.Boolaunch.Tui.HeaderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/header_battery_placeholder" />
+
+        <TextView
+            android:id="@+id/headerTimeText"
+            style="@style/Widget.Boolaunch.Tui.HeaderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header_time_placeholder" />
+    </LinearLayout>
+
+    <com.jp1q.boolaunch.AsciiRuleTextView
+        android:id="@+id/headerBottomSeparatorText"
+        style="@style/Widget.Boolaunch.Tui.Separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:ruleCharacter="=" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appList"
@@ -28,5 +64,29 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="none" />
+
+    <com.jp1q.boolaunch.AsciiRuleTextView
+        android:id="@+id/footerSeparatorText"
+        style="@style/Widget.Boolaunch.Tui.Separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:ruleCharacter="-" />
+
+    <TextView
+        android:id="@+id/footerHintText"
+        style="@style/Widget.Boolaunch.Tui.Footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/footer_hint"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp" />
+
+    <com.jp1q.boolaunch.AsciiRuleTextView
+        android:id="@+id/bottomSeparatorText"
+        style="@style/Widget.Boolaunch.Tui.Separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ruleCharacter="=" />
 
 </LinearLayout>

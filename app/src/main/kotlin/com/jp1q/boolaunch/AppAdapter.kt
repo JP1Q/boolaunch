@@ -22,7 +22,7 @@ class AppAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(app: AppInfo) {
-            binding.appName.text = app.label
+            binding.appName.text = TuiTextFormatter.formatLauncherItemLabel(app.label)
             binding.root.setOnClickListener { onAppClick(app) }
         }
     }
