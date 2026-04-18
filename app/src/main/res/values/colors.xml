@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg">#FF510000</color>
-    <color name="text">#FFFFFFFF</color>
-    <color name="accent">#FFE11D48</color>
-    <color name="divider">#FF9C0000</color>
+    <color name="bg_crimson">#FF510000</color>
+    <color name="text_light">#FFFFFFFF</color>
+    <color name="accent_crimson">#FFE11D48</color>
+    <color name="divider_crimson">#FF9C0000</color>
+
+    <color name="bg_emerald">#FF002B1B</color>
+    <color name="accent_emerald">#FF00E59B</color>
+    <color name="divider_emerald">#FF007A54</color>
 </resources>
