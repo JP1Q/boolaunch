@@ -87,32 +87,32 @@
                 android:text="@string/settings_title" />
 
             <TextView
-                android:id="@+id/settingsColourSchemeLabel"
+                android:id="@+id/settingsColorSchemeLabel"
                 style="@style/Widget.Boolaunch.Tui.HeaderStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/settings_colour_scheme" />
+                android:text="@string/settings_color_scheme" />
 
             <RadioGroup
-                android:id="@+id/colourSchemeGroup"
+                android:id="@+id/colorSchemeGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
 
                 <RadioButton
-                    android:id="@+id/colourSchemeCrimson"
+                    android:id="@+id/colorSchemeCrimson"
                     style="@style/Widget.Boolaunch.Tui.AppItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_colour_scheme_crimson" />
+                    android:text="@string/settings_color_scheme_crimson" />
 
                 <RadioButton
-                    android:id="@+id/colourSchemeEmerald"
+                    android:id="@+id/colorSchemeEmerald"
                     style="@style/Widget.Boolaunch.Tui.AppItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_colour_scheme_emerald" />
+                    android:text="@string/settings_color_scheme_emerald" />
             </RadioGroup>
         </LinearLayout>
     </ViewFlipper>

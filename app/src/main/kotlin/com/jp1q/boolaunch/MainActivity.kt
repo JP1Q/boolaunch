@@ -130,16 +130,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSettingsPage() {
         val selectedScheme = getSelectedColorScheme()
-        binding.colourSchemeGroup.check(
+        binding.colorSchemeGroup.check(
             when (selectedScheme) {
-                ColorScheme.CRIMSON -> R.id.colourSchemeCrimson
-                ColorScheme.EMERALD -> R.id.colourSchemeEmerald
+                ColorScheme.CRIMSON -> R.id.colorSchemeCrimson
+                ColorScheme.EMERALD -> R.id.colorSchemeEmerald
             }
         )
 
-        binding.colourSchemeGroup.setOnCheckedChangeListener { _, checkedId ->
+        binding.colorSchemeGroup.setOnCheckedChangeListener { _, checkedId ->
             val scheme = when (checkedId) {
-                R.id.colourSchemeEmerald -> ColorScheme.EMERALD
+                R.id.colorSchemeEmerald -> ColorScheme.EMERALD
                 else -> ColorScheme.CRIMSON
             }
             onColorSchemeSelected(scheme)

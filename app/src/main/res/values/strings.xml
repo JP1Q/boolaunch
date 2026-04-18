@@ -7,8 +7,8 @@
     <string name="footer_hint_apps">&lt; swipe left for settings &gt;</string>
     <string name="footer_hint_settings">&lt; swipe right to go back &gt;</string>
     <string name="settings_title">[ Settings ]</string>
-    <string name="settings_colour_scheme">Colour scheme</string>
-    <string name="settings_colour_scheme_crimson">Crimson</string>
-    <string name="settings_colour_scheme_emerald">Emerald</string>
+    <string name="settings_color_scheme">Color scheme</string>
+    <string name="settings_color_scheme_crimson">Crimson</string>
+    <string name="settings_color_scheme_emerald">Emerald</string>
     <string name="unable_to_launch">Unable to launch %1$s</string>
 </resources>
