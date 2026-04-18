@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Root style for this app's widget styles.
+         parent="" prevents implicit inheritance from a non-existent "Widget" style. -->
+    <style name="Widget.Boolaunch" parent="" />
+
+    <!-- Base style. Styles named Widget.Boolaunch.Tui.* implicitly inherit from this. -->
+    <style name="Widget.Boolaunch.Tui" parent="Widget.Boolaunch">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="Widget.Boolaunch.Tui.Separator">
         <item name="android:textColor">@color/text</item>
         <item name="android:fontFamily">monospace</item>
