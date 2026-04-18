@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">boolaunch</string>
-    <string name="header">boolaunch — apps</string>
+    <string name="header">[ boolaunch ]                 [ 100% ] [ 17:59 ]</string>
+    <string name="separator_line">================================================</string>
+    <string name="footer_separator_line">------------------------------------------------</string>
+    <string name="footer_hint">&lt; swipe for more &gt;</string>
     <string name="unable_to_launch">Unable to launch %1$s</string>
 </resources>

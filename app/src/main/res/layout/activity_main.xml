@@ -4,22 +4,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg"
-    android:padding="16dp">
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/topSeparatorText"
+        style="@style/Widget.Boolaunch.Tui.Separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/separator_line" />
 
     <TextView
         android:id="@+id/headerText"
+        style="@style/Widget.Boolaunch.Tui.Header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/header"
-        android:textColor="@color/accent"
-        android:fontFamily="monospace"
-        android:textSize="14sp"
         android:paddingBottom="8dp" />
 
-    <View
+    <TextView
+        android:id="@+id/headerBottomSeparatorText"
+        style="@style/Widget.Boolaunch.Tui.Separator"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"
+        android:layout_height="wrap_content"
+        android:text="@string/separator_line"
         android:layout_marginBottom="8dp" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -28,5 +35,29 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="none" />
+
+    <TextView
+        android:id="@+id/footerSeparatorText"
+        style="@style/Widget.Boolaunch.Tui.Separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/footer_separator_line"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/footerHintText"
+        style="@style/Widget.Boolaunch.Tui.Footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/footer_hint"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/bottomSeparatorText"
+        style="@style/Widget.Boolaunch.Tui.Separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/separator_line" />
 
 </LinearLayout>

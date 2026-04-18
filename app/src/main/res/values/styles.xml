@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.Boolaunch.Tui.Separator">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.Boolaunch.Tui.Header">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.Boolaunch.Tui.Footer">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="Widget.Boolaunch.Tui.AppItem">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>
