@@ -5,5 +5,7 @@
     <string name="header_battery_placeholder">[ --% ]</string>
     <string name="header_time_placeholder">[ --:-- ]</string>
     <string name="footer_hint">&lt; swipe for more &gt;</string>
+    <string name="footer_hint_back">&lt; swipe right to go back &gt;</string>
+    <string name="search_hint">[ search apps ]</string>
     <string name="unable_to_launch">Unable to launch %1$s</string>
 </resources>

@@ -58,12 +58,50 @@
         android:layout_marginBottom="8dp"
         app:ruleCharacter="=" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/appList"
+    <FrameLayout
+        android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="none" />
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+
+        <LinearLayout
+            android:id="@+id/searchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/searchInput"
+                style="@style/Widget.Boolaunch.Tui.AppItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/bg_tui_item"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
+                android:textColorHint="@color/accent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchAppList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </FrameLayout>
 
     <com.jp1q.boolaunch.AsciiRuleTextView
         android:id="@+id/footerSeparatorText"
