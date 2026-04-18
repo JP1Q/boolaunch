@@ -29,7 +29,7 @@ class HeaderStatusFormatterTest {
     @Test
     fun `formatAsciiClock renders multi-line ascii digits for current time`() {
         val knownDate = Date(0L)
-        val asciiClock = HeaderStatusFormatter.formatAsciiClock(knownDate)
+        val asciiClock = HeaderStatusFormatter.formatAsciiClock(knownDate, Locale.US)
         assertEquals(
             " ###   ###       ###   ### \n" +
                 "#   # #   #  #  #   # #   #\n" +

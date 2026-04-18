@@ -21,6 +21,7 @@ object HeaderStatusFormatter {
         '9' to listOf(" ### ", "#   #", " ####", "    #", " ### "),
         ':' to listOf("     ", "  #  ", "     ", "  #  ", "     ")
     )
+    private val UNKNOWN_ASCII_GLYPH = List(5) { "     " }
 
     fun formatBatteryStatus(batteryLevel: Int, batteryScale: Int): String {
         if (batteryLevel < 0 || batteryScale <= 0) {
@@ -35,14 +36,14 @@ object HeaderStatusFormatter {
         return "[ ${timeFormatter.format(currentDate)} ]"
     }
 
-    fun formatAsciiClock(currentDate: Date): String {
-        val timeFormatter = SimpleDateFormat(TIME_PATTERN, Locale.US)
+    fun formatAsciiClock(currentDate: Date, locale: Locale): String {
+        val timeFormatter = SimpleDateFormat(TIME_PATTERN, locale)
         val timeText = timeFormatter.format(currentDate)
         val rowCount = ASCII_DIGITS.getValue('0').size
         val rows = MutableList(rowCount) { "" }
 
         for (character in timeText) {
-            val glyph = ASCII_DIGITS[character] ?: ASCII_DIGITS.getValue('0')
+            val glyph = ASCII_DIGITS[character] ?: UNKNOWN_ASCII_GLYPH
             for (rowIndex in 0 until rowCount) {
                 if (rows[rowIndex].isNotEmpty()) {
                     rows[rowIndex] += " "

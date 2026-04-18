@@ -108,7 +108,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun formatAsciiClock(): String {
-        return HeaderStatusFormatter.formatAsciiClock(Date())
+        return HeaderStatusFormatter.formatAsciiClock(
+            currentDate = Date(),
+            locale = Locale.getDefault()
+        )
     }
 
     private fun startClockRefresh() {
