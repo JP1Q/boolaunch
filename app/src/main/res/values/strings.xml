@@ -4,11 +4,7 @@
     <string name="header_title">[ boolaunch ]</string>
     <string name="header_battery_placeholder">[ --% ]</string>
     <string name="header_time_placeholder">[ --:-- ]</string>
-    <string name="header_ascii_clock_placeholder"> ###   ###       ###   ###
-#   # #   #  #  #   # #   #
-#   # #   #     #   # #   #
-#   # #   #  #  #   # #   #
- ###   ###       ###   ### </string>
+    <string name="header_ascii_clock_placeholder"> ###   ###       ###   ### \n#   # #   #  #  #   # #   #\n#   # #   #     #   # #   #\n#   # #   #  #  #   # #   #\n ###   ###       ###   ### </string>
     <string name="footer_hint">&lt; swipe for more &gt;</string>
     <string name="unable_to_launch">Unable to launch %1$s</string>
 </resources>

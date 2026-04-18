@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startClockRefresh() {
         mainHandler.removeCallbacks(clockRefreshRunnable)
-        clockRefreshRunnable.run()
+        mainHandler.post(clockRefreshRunnable)
     }
 
     companion object {
