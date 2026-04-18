@@ -15,18 +15,27 @@
         <item name="android:textColor">@color/text</item>
         <item name="android:fontFamily">monospace</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.04</item>
     </style>
 
-    <style name="Widget.Boolaunch.Tui.Header">
+    <style name="Widget.Boolaunch.Tui.HeaderTitle">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
+    <style name="Widget.Boolaunch.Tui.HeaderStatus">
         <item name="android:textColor">@color/text</item>
         <item name="android:fontFamily">monospace</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="Widget.Boolaunch.Tui.Footer">
-        <item name="android:textColor">@color/text</item>
-        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.08</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
 
@@ -34,5 +43,6 @@
         <item name="android:textColor">@color/text</item>
         <item name="android:fontFamily">monospace</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.03</item>
     </style>
 </resources>
