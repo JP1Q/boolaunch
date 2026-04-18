@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jp1q.boolaunch.databinding.ActivityMainBinding
-import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
@@ -79,15 +78,16 @@ class MainActivity : AppCompatActivity() {
             ?: return "[ --% ]"
         val batteryLevel = batteryStatusIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
         val batteryScale = batteryStatusIntent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
-        if (batteryLevel < 0 || batteryScale <= 0) {
-            return "[ --% ]"
-        }
-        val batteryPercent = (batteryLevel * 100) / batteryScale
-        return "[ $batteryPercent% ]"
+        return HeaderStatusFormatter.formatBatteryStatus(
+            batteryLevel = batteryLevel,
+            batteryScale = batteryScale
+        )
     }
 
     private fun formatCurrentTime(): String {
-        val timeFormatter = SimpleDateFormat("HH:mm", Locale.getDefault())
-        return "[ ${timeFormatter.format(Date())} ]"
+        return HeaderStatusFormatter.formatCurrentTime(
+            currentDate = Date(),
+            locale = Locale.getDefault()
+        )
     }
 }
