@@ -1,11 +1,11 @@
 package com.jp1q.boolaunch
 
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.Context
-import android.os.BatteryManager
 import android.content.pm.ResolveInfo
 import android.os.Bundle
+import android.os.BatteryManager
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
@@ -181,13 +181,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showKeyboardForSearchInput() {
-        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-        inputMethodManager?.showSoftInput(binding.searchInput, InputMethodManager.SHOW_IMPLICIT)
+        getInputMethodManager()?.showSoftInput(binding.searchInput, InputMethodManager.SHOW_IMPLICIT)
     }
 
     private fun hideKeyboardFromSearchInput() {
-        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-        inputMethodManager?.hideSoftInputFromWindow(binding.searchInput.windowToken, 0)
+        getInputMethodManager()?.hideSoftInputFromWindow(binding.searchInput.windowToken, 0)
+    }
+
+    private fun getInputMethodManager(): InputMethodManager? {
+        return getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
     }
 
     companion object {

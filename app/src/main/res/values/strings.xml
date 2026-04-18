@@ -7,5 +7,6 @@
     <string name="footer_hint">&lt; swipe for more &gt;</string>
     <string name="footer_hint_back">&lt; swipe right to go back &gt;</string>
     <string name="search_hint">[ search apps ]</string>
+    <string name="app_icon_content_description_with_name">%1$s icon</string>
     <string name="unable_to_launch">Unable to launch %1$s</string>
 </resources>

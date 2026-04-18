@@ -29,6 +29,10 @@ class SearchAppAdapter(
         fun bind(app: AppInfo) {
             binding.appName.text = TuiTextFormatter.formatLauncherItemLabel(app.label)
             binding.appIcon.setImageDrawable(createMonochromeIcon(app.packageName))
+            binding.appIcon.contentDescription = binding.root.context.getString(
+                R.string.app_icon_content_description_with_name,
+                app.label
+            )
             binding.root.setOnClickListener { onAppClick(app) }
         }
     }

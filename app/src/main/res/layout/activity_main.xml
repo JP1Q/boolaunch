@@ -87,6 +87,7 @@
                 android:background="@drawable/bg_tui_item"
                 android:hint="@string/search_hint"
                 android:imeOptions="actionSearch"
+                android:importantForAccessibility="yes"
                 android:inputType="text"
                 android:paddingStart="10dp"
                 android:paddingTop="10dp"

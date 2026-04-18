@@ -24,6 +24,5 @@
         android:id="@+id/appIcon"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:contentDescription="@null" />
+        android:layout_marginStart="10dp" />
 </LinearLayout>
