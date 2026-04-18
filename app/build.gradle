@@ -57,3 +57,61 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
+
+// Convenience task for IDE "one click" runs.
+// Installs the debug APK and then launches the main activity on the connected device/emulator.
+tasks.register('installAndLaunchDebug') {
+    group = 'install'
+    description = 'Installs the debug APK and launches MainActivity on a connected device/emulator.'
+    dependsOn 'installDebug'
+
+    doLast {
+        def sdkPath = null
+
+        // Prefer local.properties (standard Android convention)
+        def localPropsFile = rootProject.file('local.properties')
+        if (localPropsFile.exists()) {
+            def props = new Properties()
+            localPropsFile.withInputStream { props.load(it) }
+            sdkPath = props.getProperty('sdk.dir')
+        }
+
+        // Fall back to environment variables
+        if (!sdkPath) sdkPath = System.getenv('ANDROID_SDK_ROOT')
+        if (!sdkPath) sdkPath = System.getenv('ANDROID_HOME')
+
+        if (!sdkPath) {
+            throw new RuntimeException("Android SDK not found. Set sdk.dir in local.properties or ANDROID_SDK_ROOT/ANDROID_HOME.")
+        }
+
+        def isWindows = System.getProperty('os.name')?.toLowerCase()?.contains('windows')
+        def adbExe = new File(new File(sdkPath.toString()), 'platform-tools/' + (isWindows ? 'adb.exe' : 'adb'))
+        if (!adbExe.exists()) {
+            throw new RuntimeException("adb not found at: ${adbExe}. Install Android SDK Platform-Tools.")
+        }
+
+        def appId = android.defaultConfig.applicationId
+
+        // Pick the first online device/emulator to avoid "more than one device/emulator".
+        def devicesOut = new ByteArrayOutputStream()
+        exec {
+            commandLine adbExe.absolutePath, 'devices'
+            standardOutput = devicesOut
+        }
+        def serial = devicesOut
+                .toString('UTF-8')
+                .readLines()
+                .find { it ==~ /^\S+\s+device\s*$/ }
+                ?.tokenize()
+                ?.first()
+
+        if (!serial) {
+            throw new RuntimeException('No online adb devices found. Start an emulator or connect a phone with USB debugging enabled.')
+        }
+
+        exec {
+            commandLine adbExe.absolutePath, '-s', serial, 'shell', 'am', 'start', '-n', "${appId}/.MainActivity"
+        }
+    }
+}
+
